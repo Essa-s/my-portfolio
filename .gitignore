@@ -1,5 +1,5 @@
 zprotfolio
 venv
 outline.md
-sqlite3.db
-templates
+db.sqlite3
+__pycache__
