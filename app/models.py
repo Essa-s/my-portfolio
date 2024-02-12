@@ -24,8 +24,7 @@ class BasicInfo(models.Model):
     instgram = models.URLField(max_length=200, blank=True)
     profile_picture = models.ImageField(upload_to='profile', height_field=None, width_field=None, max_length=None)
     about = models.TextField(blank=True)
-    class Meta:
-        abstract = True
+
 
     def save(self, *args, **kwargs):
         self.pk = 1  # Set primary key to 1 (or any other constant value)
@@ -114,14 +113,14 @@ class Experience(models.Model):
 class Fact(models.Model):
     fact = models.CharField(max_length=50)
     number = models.IntegerField()
-    emoji = models.CharField(max_length=50, balnk=True)
+    emoji = models.CharField(max_length=50, blank=True)
     def __str__(self):
         return self.fact
 
 class Service(models.Model):
     title = models.CharField(max_length=50)
     detail = models.TextField()
-    emoji = models.CharField(max_length=50, balnk=True)
+    emoji = models.CharField(max_length=50, blank=True)
 
     def __str__(self):
         return self.title
