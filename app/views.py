@@ -1,18 +1,28 @@
 from django.shortcuts import render
-from rest_framework import generics, permissions
-from .models import BasicInfo
-from .serializers import BasicInfoSerializer
+
 # Create your views here.
+from .models import BasicInfo, Skill, Course, Education, Experience, Fact, Service, Project
+
 def home(request):
-    return render(request, 'index.html', {})
+    basic_info = BasicInfo.objects.first()  # Assuming you have retrieved the BasicInfo object
+    skills = Skill.objects.all()
+    facts = Fact.objects.all()
+    courses = Course.objects.all()
+    educations = Education.objects.all()
+    experiences = Experience.objects.all()
+    services = Service.objects.all()
+    projects = Project.objects.all()
 
-class BasicInfoCreateView(generics.CreateAPIView):
-    queryset = BasicInfo.objects.all()
-    serializer_class = BasicInfoSerializer
-    permission_classes = [permissions.IsAuthenticated]
-    http_method_names = ['post']
+    context = {
+        'basic_info': basic_info,
+        'skills': skills,
+        'facts': facts,
+        'courses': courses,
+        'educations': educations,
+        'experiences': experiences,
+        'services': services,
+        'projects': projects,
 
-class BasicInfoListView(generics.ListAPIView):
-    queryset = BasicInfo.objects.all()
-    serializer_class = BasicInfoSerializer
-    http_method_names = ['get']
+    }
+    return render(request, 'index.html', context)
+
