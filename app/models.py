@@ -59,13 +59,7 @@ class Education(models.Model):
     graduate_date = models.DateField(auto_now=False, auto_now_add=False, blank=True)
     certifcate = models.ImageField(upload_to='education', height_field=None, width_field=None, max_length=None)
     detail = models.TextField()
-    def clean(self):
-        if self.present:
-            self.graduate_date = None  # Set graduate_date to None if present is checked
-        elif not self.graduate_date:
-            raise ValidationError({'graduate_date': 'Graduation date is required if not present.'})
 
-        return super().clean()
     def __str__(self):
         return f"{self.degree}-{self.major}"
 
@@ -78,31 +72,20 @@ class Course(models.Model):
     graduate_date = models.DateField(auto_now=False, auto_now_add=False, blank=True)
     certifcate = models.ImageField(upload_to='courses', height_field=None, width_field=None, max_length=None)
     detail = models.TextField()
-    def clean(self):
-        if self.present:
-            self.graduate_date = None  # Set graduate_date to None if present is checked
-        elif not self.graduate_date:
-            raise ValidationError({'graduate_date': 'Graduation date is required if not present.'})
 
-        return super().clean()
     
     def __str__(self):
         return self.title
 
 class Experience(models.Model):
     title = models.CharField(max_length=50)
+    company = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     start_date = models.DateField(auto_now=False, auto_now_add=False)
     present = models.BooleanField()
     end_date = models.DateField(auto_now=False, auto_now_add=False, blank=True)
     certifcate = models.ImageField(upload_to='courses', height_field=None, width_field=None, max_length=None)
-    def clean(self):
-        if self.present:
-            self.end_date = None  # Set graduate_date to None if present is checked
-        elif not self.end_date:
-            raise ValidationError({'graduate_date': 'Graduation date is required if not present.'})
 
-        return super().clean()
     responsiblity_1 = models.CharField(max_length=200)
     responsiblity_2 = models.CharField(max_length=200, blank=True)
     responsiblity_3 = models.CharField(max_length=200, blank=True)

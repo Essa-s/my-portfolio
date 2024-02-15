@@ -9,7 +9,7 @@ def home(request):
     skills_2 = Skill.objects.all().order_by('id')[3:]
     facts = Fact.objects.all()
     courses = Course.objects.all()
-    educations = Education.objects.all()
+    education = Education.objects.all()
     experiences = Experience.objects.all()
     services = Service.objects.all()
     projects = Project.objects.all()
@@ -20,7 +20,7 @@ def home(request):
         'skills_2': skills_2,
         'facts': facts,
         'courses': courses,
-        'educations': educations,
+        'education': education,
         'experiences': experiences,
         'services': services,
         'projects': projects,
