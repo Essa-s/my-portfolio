@@ -42,10 +42,10 @@ class Skill(models.Model):
     rate = models.IntegerField(
                 validators=[
             MinValueValidator(1, message='Rate must be at least 1.'),
-            MaxValueValidator(5, message='Rate cannot be greater than 5.')
+            MaxValueValidator(100, message='Rate cannot be greater than 100.')
         ]
     )
-    detail = models.TextField()
+    detail = models.TextField(blank=True, null=True)
     def __str__(self):
         return self.title
     

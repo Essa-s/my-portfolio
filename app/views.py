@@ -5,7 +5,8 @@ from .models import BasicInfo, Skill, Course, Education, Experience, Fact, Servi
 
 def home(request):
     basic_info = BasicInfo.objects.first()  # Assuming you have retrieved the BasicInfo object
-    skills = Skill.objects.all()
+    skills_1 = Skill.objects.all().order_by('id')[:3]
+    skills_2 = Skill.objects.all().order_by('id')[3:]
     facts = Fact.objects.all()
     courses = Course.objects.all()
     educations = Education.objects.all()
@@ -15,7 +16,8 @@ def home(request):
 
     context = {
         'basic_info': basic_info,
-        'skills': skills,
+        'skills_1': skills_1,
+        'skills_2': skills_2,
         'facts': facts,
         'courses': courses,
         'educations': educations,
