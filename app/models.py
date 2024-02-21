@@ -117,3 +117,5 @@ class Project(models.Model):
     image_1 = models.ImageField(upload_to='projects', height_field=None, width_field=None, max_length=None)
     image_2 = models.ImageField(upload_to='projects', height_field=None, width_field=None, max_length=None)
     image_3 = models.ImageField(upload_to='projects', height_field=None, width_field=None, max_length=None)
+    def __str__(self):
+        return self.title
